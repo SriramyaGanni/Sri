@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: tes-daemonset
+  labels:
+    app: tes-daemon
+spec:
+  selector:
+    matchLabels:
+      app: tes-daemon
+  template:
+    metadata:
+      labels:
+        app: tes-daemon
+    spec:
+      containers:
+        - name: tes-container
+          image: sriramyaganni/tes-website:latest
+          ports:
+            - containerPort: 80
