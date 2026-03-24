@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tes-pod
+  labels:
+    app: tes
+spec:
+  containers:
+    - name: tes-container
+      image: sriramyaganni/tes-website:latest
+      ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tes-service
+spec:
+  selector:
+    app: tes
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30003
+  type: NodePort
